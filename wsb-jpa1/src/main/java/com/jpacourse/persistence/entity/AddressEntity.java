@@ -1,10 +1,6 @@
 package com.jpacourse.persistence.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "ADDRESS")
@@ -13,7 +9,6 @@ public class AddressEntity {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
 	private String city;
 
 	private String addressLine1;
@@ -21,6 +16,11 @@ public class AddressEntity {
 	private String addressLine2;
 
 	private String postalCode;
+	@OneToOne
+	private PatientEntity patient;
+
+	@OneToOne
+	private DoctorEntity doctor;
 
 	public Long getId() {
 		return id;
