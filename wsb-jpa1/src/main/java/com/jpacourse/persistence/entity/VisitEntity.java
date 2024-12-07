@@ -20,14 +20,14 @@ public class VisitEntity {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "PATIENT_ID", nullable = false)
-	private PatientEntity patient;
+	private PatientEntity patient; // Relacja jednostronna od strony dziecka (VisitEntity jako właściciel relacji)
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "DOCTOR_ID", nullable = false)
-	private DoctorEntity doctor;
+	private DoctorEntity doctor; // Relacja jednostronna od strony dziecka (VisitEntity jako właściciel relacji)
 
 	@OneToMany(mappedBy = "visit", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<MedicalTreatmentEntity> medicalTreatment;
+	private List<MedicalTreatmentEntity> medicalTreatment; // Relacja dwustronna, rodzicem jest MedicalTreatmentEntity
 
 	public Long getId() {
 		return id;

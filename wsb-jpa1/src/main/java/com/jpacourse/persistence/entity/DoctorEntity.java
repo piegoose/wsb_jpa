@@ -32,11 +32,10 @@ public class DoctorEntity {
 	private Specialization specialization;
 
 	@OneToOne(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private AddressEntity address;
+	private AddressEntity address; // Relacja dwustronna, rodzicem (właścicielem relacji) jest AddressEntity
 
 	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<VisitEntity> visit;
-
+	private List<VisitEntity> visit; // Relacja dwustronna, rodzicem (właścicielem relacji) jest VisitEntity
 
 	public Long getId() {
 		return id;
