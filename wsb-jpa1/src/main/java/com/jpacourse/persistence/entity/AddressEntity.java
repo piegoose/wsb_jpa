@@ -17,10 +17,9 @@ public class AddressEntity {
 
 	private String postalCode;
 	@OneToOne
-	private PatientEntity patient;
-
+	private PatientEntity patient; // Relacja jednostronna od strony rodzica (AddressEntity jako właściciel relacji)
 	@OneToOne
-	private DoctorEntity doctor;
+	private DoctorEntity doctor; // Relacja jednostronna od strony rodzica (AddressEntity jako właściciel relacji)
 
 	public Long getId() {
 		return id;

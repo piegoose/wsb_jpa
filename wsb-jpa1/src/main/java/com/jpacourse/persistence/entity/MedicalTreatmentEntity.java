@@ -20,7 +20,7 @@ public class MedicalTreatmentEntity {
 	private TreatmentType type;
 
 	@ManyToOne
-	private VisitEntity visit;
+	private VisitEntity visit; // Relacja jednostronna od strony dziecka (MedicalTreatmentEntity jako właściciel relacji)
 
 	public Long getId() {
 		return id;

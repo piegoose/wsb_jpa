@@ -31,10 +31,10 @@ public class PatientEntity {
 	private LocalDate dateOfBirth;
 
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<VisitEntity> visits;
+	private List<VisitEntity> visits; // Relacja dwustronna, rodzicem (właścicielem relacji) jest VisitEntity
 
 	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private AddressEntity address;
+	private AddressEntity address; // Relacja dwustronna, rodzicem (właścicielem relacji) jest AddressEntity
 
 
 	public Long getId() {
