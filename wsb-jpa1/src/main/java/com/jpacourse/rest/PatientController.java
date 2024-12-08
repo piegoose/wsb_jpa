@@ -17,7 +17,6 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    // GET /patients/{id} - Fetch a patient by ID
     @GetMapping("/{id}")
     public ResponseEntity<PatientTO> getPatientById(@PathVariable Long id) {
         PatientTO patient = patientService.findById(id);
@@ -27,31 +26,10 @@ public class PatientController {
         return ResponseEntity.ok(patient);
     }
 
-    // POST /patients - Create a new patient
     @PostMapping
     public ResponseEntity<PatientTO> createPatient(@RequestBody PatientTO patientTO) {
         PatientTO savedPatient = patientService.save(patientTO);
         return ResponseEntity.ok(savedPatient);
     }
 
-    // PUT /patients/{id} - Update an existing patient
-    @PutMapping("/{id}")
-    public ResponseEntity<PatientTO> updatePatient(@PathVariable Long id, @RequestBody PatientTO patientTO) {
-        patientTO.setId(id); // Ensure the ID is set
-        PatientTO updatedPatient = patientService.update(patientTO);
-        if (updatedPatient == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(updatedPatient);
-    }
-
-    // DELETE /patients/{id} - Delete a patient by ID
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deletePatient(@PathVariable Long id) {
-        boolean deleted = patientService.delete(id);
-        if (!deleted) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.noContent().build();
-    }
 }
