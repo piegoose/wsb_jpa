@@ -31,8 +31,13 @@ public class DoctorEntity {
 	@Enumerated(EnumType.STRING)
 	private Specialization specialization;
 
-	@OneToOne(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private AddressEntity address; // Relacja dwustronna, rodzicem (właścicielem relacji) jest AddressEntity
+//	@OneToOne(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//	private AddressEntity address; // Relacja dwustronna, rodzicem (właścicielem relacji) jest AddressEntity
+
+	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@JoinColumn(name = "address_id", referencedColumnName = "id", nullable = true)
+	private AddressEntity address;
+
 
 	@OneToMany(mappedBy = "doctor", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 	private List<VisitEntity> visit; // Relacja dwustronna, rodzicem (właścicielem relacji) jest VisitEntity
