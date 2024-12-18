@@ -38,6 +38,10 @@ public abstract class AbstractDao<T, K extends Serializable> implements Dao<T, K
 		return entityManager.find(getDomainClass(), id);
 	}
 
+	@SuppressWarnings("unchecked")
+	public <E> E findEntityById(Class<E> entityClass, Long id) {
+		return entityManager.find(entityClass, id);
+	}
 	@Override
 	public List<T> findAll() {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();

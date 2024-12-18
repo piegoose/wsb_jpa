@@ -3,12 +3,15 @@ package com.jpacourse.service.impl;
 import com.jpacourse.dto.VisitTO;
 import com.jpacourse.mapper.VisitMapper;
 import com.jpacourse.persistence.dao.VisitDao;
+import com.jpacourse.persistence.entity.DoctorEntity;
+import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.service.VisitService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -34,4 +37,14 @@ public class VisitServiceImpl implements VisitService {
                 .map(VisitMapper::mapToTO)
                 .collect(Collectors.toList());
     }
+
+//    @Override
+//    public VisitTO addVisit(Long patientId, Long doctorId, LocalDateTime visitDate, String description, List<String> treatmentTypes) {
+//
+//        PatientEntity patientEntity = entityManager.find
+//        if (patientEntity == null) {
+//            throw new IllegalArgumentException("Patient id not found: " + patientId);
+//
+//        }
+//    }
 }

@@ -22,6 +22,9 @@ public class MedicalTreatmentEntity {
 	@ManyToOne
 	private VisitEntity visit; // Relacja jednostronna od strony dziecka (MedicalTreatmentEntity jako właściciel relacji)
 
+	public void setVisit(VisitEntity visit) {
+		this.visit = visit;
+	}
 	public Long getId() {
 		return id;
 	}
