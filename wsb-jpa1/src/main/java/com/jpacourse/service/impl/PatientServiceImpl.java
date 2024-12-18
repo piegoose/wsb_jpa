@@ -9,6 +9,10 @@ import org.springframework.stereotype.Service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
+
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Service
 @Transactional
 public class PatientServiceImpl implements PatientService {
@@ -51,6 +55,20 @@ public class PatientServiceImpl implements PatientService {
         }
         patientDao.delete(id);
         return true;
+    }
+
+    @Override
+    public void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime visitDate, String description, List<String> treatmentTypes) {
+        patientDao.addVisitToPatient(patientId, doctorId, visitDate, description, treatmentTypes);
+    }
+
+    @Override
+    public void deletePatient(Long patientId) {
+        PatientEntity patientEntity = patientDao.findOne(patientId);
+        if (patientEntity == null) {
+            throw new IllegalArgumentException("Patient id not found: "+ patientId);
+        }
+        patientDao.delete(patientId);
     }
 
 }

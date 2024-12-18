@@ -12,6 +12,7 @@ public class PatientTO {
     private String patientNumber;
     private LocalDate dateOfBirth;
     private List<VisitTO> visits;
+    private Boolean hasInsurence;
 
 
 
@@ -77,5 +78,13 @@ public class PatientTO {
 
     public void setVisits(List<VisitTO> visits) {
         this.visits = visits;
+    }
+
+    public Boolean getHasInsurence() {
+        return hasInsurence;
+    }
+
+    public void setHasInsurence(Boolean hasInsurence) {
+        this.hasInsurence = hasInsurence;
     }
 }

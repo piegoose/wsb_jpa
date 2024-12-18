@@ -35,4 +35,6 @@ public class VisitController {
         List<VisitTO> visits = visitService.findAll();
         return ResponseEntity.ok(visits);
     }
+
+
 }
