@@ -4,5 +4,13 @@ public enum TreatmentType {
 
 	USG,
 	EKG,
-	RTG
+	RTG,
+	DIAGNOSTIC,
+	TREATMENT,
+	REHABILITATION,
+	SURGERY,
+	FOLLOWUP,
+	LABORATORY,
+	MRI
+
 }

@@ -1,6 +1,7 @@
 package com.jpacourse.dto;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class PatientTO {
     private Long id;
@@ -10,6 +11,10 @@ public class PatientTO {
     private String email;
     private String patientNumber;
     private LocalDate dateOfBirth;
+    private List<VisitTO> visits;
+    private Boolean hasInsurence;
+
+
 
     // Gettery i settery
     public Long getId() {
@@ -66,5 +71,20 @@ public class PatientTO {
 
     public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
+    }
+    public List<VisitTO> getVisits() {
+        return visits;
+    }
+
+    public void setVisits(List<VisitTO> visits) {
+        this.visits = visits;
+    }
+
+    public Boolean getHasInsurence() {
+        return hasInsurence;
+    }
+
+    public void setHasInsurence(Boolean hasInsurence) {
+        this.hasInsurence = hasInsurence;
     }
 }

@@ -16,10 +16,10 @@ public class AddressEntity {
 	private String addressLine2;
 
 	private String postalCode;
-	@OneToOne
-	private PatientEntity patient; // Relacja jednostronna od strony rodzica (AddressEntity jako właściciel relacji)
-	@OneToOne
-	private DoctorEntity doctor; // Relacja jednostronna od strony rodzica (AddressEntity jako właściciel relacji)
+//	@OneToOne
+//	private PatientEntity patient; // Relacja jednostronna od strony rodzica (AddressEntity jako właściciel relacji)
+//	@OneToOne
+//	private DoctorEntity doctor; // Relacja jednostronna od strony rodzica (AddressEntity jako właściciel relacji)
 
 	public Long getId() {
 		return id;
