@@ -7,6 +7,7 @@ import java.util.List;
 
 public interface PatientDao extends Dao<PatientEntity, Long> {
 
+//    List<PatientEntity> findByLastName(String lastName);
     void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime visitDate, String description, List<String> treatmentTypes);
 
 }

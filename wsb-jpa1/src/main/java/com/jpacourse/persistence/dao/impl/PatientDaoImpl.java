@@ -18,6 +18,13 @@ import java.util.stream.Collectors;
 
 @Repository
 public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements PatientDao {
+//    @Override
+//    public List<PatientEntity> findByLastName(String lastName) {
+//        return entityManager.createNativeQuery("SELECT * FROM patient WHERE last_name = ?", PatientEntity.class)
+//                .setParameter(1, lastName)
+//                .getResultList();
+//    }
+
     @Override
     @Transactional
     public void addVisitToPatient(Long patientId, Long doctorId, LocalDateTime visitDate, String description, List<String> treatmentTypes) {
@@ -47,4 +54,5 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
 
         update(patient);
     }
+
 }

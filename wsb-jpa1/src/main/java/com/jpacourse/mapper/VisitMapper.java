@@ -33,37 +33,37 @@ public final class VisitMapper {
         }
         return visitTO;
     }
-//    public static VisitEntity mapToEntity(final VisitTO visitTO) {
-//        if (visitTO == null) {
-//            return null;
-//
-//        }
-//        VisitEntity visitEntity = new VisitEntity();
-//        visitEntity.setId(visitTO.getId());
-//        visitEntity.setTime(visitTO.getVisitDate());
-//        visitEntity.setDescription(visitTO.getDescription());
-//        if (visitEntity.getDoctor() != null){
-//            visitEntity.setDoctor(new DoctorEntity());
-//
-//        }
-//        if (visitEntity.getPatient() != null){
-//            visitEntity.setPatient(new PatientEntity());
-//
-//        }
-//        if (visitEntity.getMedicalTreatment() != null){
-//            List<MedicalTreatmentEntity> medicalTreatments = visitTO.getTreatmentTypes()
-//                    .stream()
-//                    .map(description -> {
-//                        MedicalTreatmentEntity treatmentEntity = new MedicalTreatmentEntity();
-//                        treatmentEntity.setDescription(description);
-//                        treatmentEntity.setVisit(visitEntity);
-//                        return treatmentEntity;
-//                    })
-//                    .collect(Collectors.toList());
-//            visitEntity.setMedicalTreatment(medicalTreatments);
-//        }
-//
-//        return visitEntity;
-//    }
+    public static VisitEntity mapToEntity(final VisitTO visitTO) {
+        if (visitTO == null) {
+            return null;
+
+        }
+        VisitEntity visitEntity = new VisitEntity();
+        visitEntity.setId(visitTO.getId());
+        visitEntity.setTime(visitTO.getVisitDate());
+        visitEntity.setDescription(visitTO.getDescription());
+        if (visitEntity.getDoctor() != null){
+            visitEntity.setDoctor(new DoctorEntity());
+
+        }
+        if (visitEntity.getPatient() != null){
+            visitEntity.setPatient(new PatientEntity());
+
+        }
+        if (visitEntity.getMedicalTreatment() != null){
+            List<MedicalTreatmentEntity> medicalTreatments = visitTO.getTreatmentTypes()
+                    .stream()
+                    .map(description -> {
+                        MedicalTreatmentEntity treatmentEntity = new MedicalTreatmentEntity();
+                        treatmentEntity.setDescription(description);
+                        treatmentEntity.setVisit(visitEntity);
+                        return treatmentEntity;
+                    })
+                    .collect(Collectors.toList());
+            visitEntity.setMedicalTreatment(medicalTreatments);
+        }
+
+        return visitEntity;
+    }
 
 }

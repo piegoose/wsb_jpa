@@ -1,6 +1,7 @@
 package com.jpacourse.persistence.entity;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.*;
@@ -34,7 +35,8 @@ public class PatientEntity {
 	private Boolean hasInsurence;
 
 	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-	private List<VisitEntity> visits; // Relacja dwustronna, rodzicem (właścicielem relacji) jest VisitEntity
+	private List<VisitEntity> visits = new ArrayList<>();
+//	private List<VisitEntity> visits; // Relacja dwustronna, rodzicem (właścicielem relacji) jest VisitEntity
 
 
 
