@@ -1,7 +1,11 @@
+
 package com.jpacourse.mapper;
 
 import com.jpacourse.dto.PatientTO;
 import com.jpacourse.persistence.entity.PatientEntity;
+
+import java.util.List;
+import java.util.stream.Collectors;
 
 public final class PatientMapper {
 
@@ -19,6 +23,11 @@ public final class PatientMapper {
         patientTO.setPatientNumber(patientEntity.getPatientNumber());
         patientTO.setDateOfBirth(patientEntity.getDateOfBirth());
         patientTO.setHasInsurence(patientEntity.getHasInsurence());
+        if (patientEntity.getVisits() != null) {
+            patientTO.setVisits(patientEntity.getVisits().stream()
+                    .map(VisitMapper::mapToTO)
+                    .collect(Collectors.toList()));
+        }
 
         return patientTO;
     }
@@ -37,7 +46,15 @@ public final class PatientMapper {
         patientEntity.setPatientNumber(patientTO.getPatientNumber());
         patientEntity.setDateOfBirth(patientTO.getDateOfBirth());
         patientEntity.setHasInsurence(patientTO.getHasInsurence());
-
+        if (patientTO.getVisits() != null) {
+            patientEntity.setVisits(patientTO.getVisits().stream()
+                    .map(VisitMapper::mapToEntity)
+                    .collect(Collectors.toList()));
+        }
         return patientEntity;
     }
 }
+
+
+
+

@@ -41,7 +41,7 @@ VALUES (1, 'John', 'Doctor', '1234567890', 'john.doctor@example.com', 'D001', 'S
 
 INSERT INTO visit (id, description, time, doctor_id, patient_id)
 VALUES
-    (1, 'Cardiac consultation', '2024-12-05 10:00:00', 3, 1),
+    (1, 'Cardiac consultation', '2024-12-05 10:00:00', 1, 1),
     (2, 'Follow-up visit', '2024-12-06 14:00:00', 3, 2),
     (3, 'Skin check-up', '2024-12-07 09:00:00', 2, 3),
     (4, 'Orthopedic consultation', '2024-12-08 11:00:00', 4, 4),
