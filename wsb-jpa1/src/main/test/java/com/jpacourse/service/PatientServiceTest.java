@@ -74,6 +74,7 @@ public class PatientServiceTest {
     @Transactional
     @Test
     public void testDeletePatientShouldRemoveVisits() {
+
         // given
         Long patientId = 1L;
         Long visitId = 1L;
