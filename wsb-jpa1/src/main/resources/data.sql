@@ -22,7 +22,8 @@ values
     (4, 'Emily', 'White', '7891234560', 'emily.white@example.com', 'P004', '1992-07-30', 4, TRUE),
     (5, 'Michael', 'Taylor', '6543219870', 'michael.taylor@example.com', 'P005', '1988-11-20', 5, FALSE),
     (6, 'Alice', 'Johnson', '1112223330', 'alice.johnson@example.com', 'P006', '1993-04-12', 6, TRUE),
-    (7, 'Tom', 'Harris', '4445556660', 'tom.harris@example.com', 'P007', '1980-02-14', 7, FALSE);
+    (7, 'Tom', 'Harris', '4445556660', 'tom.harris@example.com', 'P007', '1980-02-14', 7, FALSE),
+    (8, 'Tomek', 'Slayer', '4445556660', 'tomek.slayer@example.com', 'P007', '1980-02-14', 7, FALSE);
 
 INSERT INTO doctor (id, first_name, last_name, telephone_number, email, doctor_number, specialization, address_id)
 VALUES (1, 'John', 'Doctor', '1234567890', 'john.doctor@example.com', 'D001', 'SURGEON', 8),
