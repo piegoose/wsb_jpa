@@ -40,27 +40,21 @@ public class PatientDaoTest {
     @Test
     public void addVisitToPatientTest() {
         // Given
-        PatientEntity patient = new PatientEntity();
-        patient.setFirstName("John");
-        patient.setLastName("Doe");
-        patient.setEmail("johndoe@example.com");
-        patient.setTelephoneNumber("123456789");
-        patient.setHasInsurence(true);
-        patient.setDateOfBirth(LocalDate.of(1990, 1, 1));
-        patient.setPatientNumber("P123");
-        patient = patientDao.save(patient);
+        Long patientId = 8L; //pacjent w data.sql bez wizyt
+        Long doctorId = 1L;
+        PatientEntity patient = patientDao.findOne(patientId);
+        assertThat(patient).isNotNull();
+        assertThat(patient.getId()).isEqualTo(patientId);
+        assertThat(patient.getVisits()).isEmpty(); //brak wizyt
 
-        DoctorEntity doctor = new DoctorEntity();
-        doctor.setFirstName("Dr");
-        doctor.setLastName("Smith");
-        doctor.setSpecialization(Specialization.NEUROLOGIST);
-        doctor.setTelephoneNumber("987654321");
-        doctor.setDoctorNumber("D123");
-        doctor = entityManager.merge(doctor);
+        PatientEntity doctor = patientDao.findOne(doctorId);
+        assertThat(doctor).isNotNull();
+        assertThat(doctor.getId()).isEqualTo(doctorId);
+
 
         LocalDateTime visitTime = LocalDateTime.now();
         String visitDescription = "Follow-up consultation";
-        List<String> treatmentTypes = Arrays.asList("ECG", "Blood Test");
+        List<String> treatmentTypes = Arrays.asList("EKG", "REHABILITATION");
 
         // When: Dodajemy wizytę do pacjenta
         patientDao.addVisitToPatient(patient.getId(), doctor.getId(), visitTime, visitDescription, treatmentTypes);
@@ -69,9 +63,9 @@ public class PatientDaoTest {
         PatientEntity updatedPatient = patientDao.findOne(patient.getId());
         assertThat(updatedPatient).isNotNull();
         assertThat(updatedPatient.getVisits()).isNotEmpty();
-        assertThat(updatedPatient.getVisits().size()).isEqualTo(1);
+        assertThat(updatedPatient.getVisits().size()).isEqualTo(1); //posiada wizytę
 
-        VisitEntity visit = updatedPatient.getVisits().get(0);
+        VisitEntity visit = updatedPatient.getVisits().get(0); //Sprawdzenie czy wizyta ma parametry
         assertThat(visit.getDescription()).isEqualTo(visitDescription);
         assertThat(visit.getDoctor().getId()).isEqualTo(doctor.getId());
         assertThat(visit.getTime()).isEqualTo(visitTime);

@@ -5,6 +5,7 @@ import com.jpacourse.persistence.entity.DoctorEntity;
 import com.jpacourse.persistence.entity.MedicalTreatmentEntity;
 import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
+import com.jpacourse.persistence.enums.TreatmentType;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.EntityManager;
@@ -42,13 +43,15 @@ public class PatientDaoImpl extends AbstractDao<PatientEntity, Long> implements 
         visitEntity.setTime(visitDate);
         visitEntity.setDescription(description);
 
-//        List<String> treatmentTypesList = new ArrayList<>(treatmentTypes);
         List<MedicalTreatmentEntity> treatments = treatmentTypes.stream().map(type -> {
             MedicalTreatmentEntity treatment = new MedicalTreatmentEntity();
             treatment.setDescription(type);
             treatment.setVisit(visitEntity);
+            treatment.setType(TreatmentType.valueOf(type));
             return treatment;
         }).collect(Collectors.toList());
+
+        visitEntity.setMedicalTreatment(treatments); //mialem skasowac, ale brakowalo tylko 1 linijki
 
         patient.getVisits().add(visitEntity);
 
