@@ -52,7 +52,9 @@ VALUES
     (8, 'Abdominal Ultrasound', '2024-12-12 11:00:00', 2, 4),
     (9, 'Chest X-Ray', '2024-12-13 14:30:00', 1, 2),
     (10, 'Cardiac Follow-Up', '2024-12-14 08:45:00', 3, 5),
-    (11, 'Pelvic Ultrasound', '2024-12-15 10:15:00', 2, 3);
+    (11, 'Pelvic Ultrasound', '2024-12-15 10:15:00', 2, 3),
+    (12, 'Pelvic Ultrasound', '2024-12-15 10:15:00', 2, 3),
+    (13, 'Pelvic Ultrasound', '2024-12-15 10:15:00', 2, 3);
 
 INSERT INTO medical_treatment (id, description, type, visit_id)
 VALUES

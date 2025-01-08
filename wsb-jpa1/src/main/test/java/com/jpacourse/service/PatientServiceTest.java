@@ -5,6 +5,7 @@ import com.jpacourse.dto.VisitTO;
 import com.jpacourse.persistence.dao.PatientDao;
 import com.jpacourse.persistence.dao.VisitDao;
 import com.jpacourse.persistence.entity.DoctorEntity;
+import com.jpacourse.persistence.entity.MedicalTreatmentEntity;
 import com.jpacourse.persistence.entity.PatientEntity;
 import com.jpacourse.persistence.entity.VisitEntity;
 import org.junit.Test;
@@ -14,10 +15,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.transaction.annotation.Transactional;
+
 import static org.junit.jupiter.api.Assertions.*;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import static org.assertj.core.api.Assertions.assertThat;
 import org.junit.jupiter.api.BeforeEach;
 @RunWith(SpringRunner.class)
@@ -102,4 +106,5 @@ public class PatientServiceTest {
         DoctorEntity doctor = entityManager.find(DoctorEntity.class, doctorId);
         assertThat(doctor).isNotNull();
     }
+
 }
