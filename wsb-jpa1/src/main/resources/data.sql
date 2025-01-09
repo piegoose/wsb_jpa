@@ -14,16 +14,16 @@ VALUES
     (12, 'Las Vegas', '909 Casino Blvd', 'Penthouse', '89109'),
     (13, 'Atlanta', '100 Peachtree St', NULL, '30303');
 
-insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, has_insurence)
+insert into patient (id, first_name, last_name, telephone_number, email, patient_number, date_of_birth, address_id, has_insurence, version)
 values
-    (1, 'John', 'Doe', '1234567890', 'john.doe@example.com', 'P001', '1990-01-01', 1, TRUE),
-    (2, 'Jane', 'Smith', '9876543210', 'jane.smith@example.com', 'P002', '1985-05-15', 2, FALSE),
-    (3, 'Robert', 'Brown', '4567891230', 'robert.brown@example.com', 'P003', '1975-03-25', 3, TRUE),
-    (4, 'Emily', 'White', '7891234560', 'emily.white@example.com', 'P004', '1992-07-30', 4, TRUE),
-    (5, 'Michael', 'Taylor', '6543219870', 'michael.taylor@example.com', 'P005', '1988-11-20', 5, FALSE),
-    (6, 'Alice', 'Johnson', '1112223330', 'alice.johnson@example.com', 'P006', '1993-04-12', 6, TRUE),
-    (7, 'Tom', 'Harris', '4445556660', 'tom.harris@example.com', 'P007', '1980-02-14', 7, FALSE),
-    (8, 'Tomek', 'Slayer', '4445556660', 'tomek.slayer@example.com', 'P007', '1980-02-14', 7, FALSE);
+    (1, 'John', 'Doe', '1234567890', 'john.doe@example.com', 'P001', '1990-01-01', 1, TRUE, 0),
+    (2, 'Jane', 'Smith', '9876543210', 'jane.smith@example.com', 'P002', '1985-05-15', 2, FALSE, 0),
+    (3, 'Robert', 'Brown', '4567891230', 'robert.brown@example.com', 'P003', '1975-03-25', 3, TRUE, 0),
+    (4, 'Emily', 'White', '7891234560', 'emily.white@example.com', 'P004', '1992-07-30', 4, TRUE, 0),
+    (5, 'Michael', 'Taylor', '6543219870', 'michael.taylor@example.com', 'P005', '1988-11-20', 5, FALSE, 0),
+    (6, 'Alice', 'Johnson', '1112223330', 'alice.johnson@example.com', 'P006', '1993-04-12', 6, TRUE, 0),
+    (7, 'Tom', 'Harris', '4445556660', 'tom.harris@example.com', 'P007', '1980-02-14', 7, FALSE, 0),
+    (8, 'Tomek', 'Slayer', '4445556660', 'tomek.slayer@example.com', 'P007', '1980-02-14', 7, FALSE, 0);
 
 INSERT INTO doctor (id, first_name, last_name, telephone_number, email, doctor_number, specialization, address_id)
 VALUES (1, 'John', 'Doctor', '1234567890', 'john.doctor@example.com', 'D001', 'SURGEON', 8),

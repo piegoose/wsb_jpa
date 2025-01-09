@@ -33,7 +33,7 @@ public class VisitServiceTest {
     private VisitDao visitDao;
 
     @Test
- public void shouldfindAllByPatientId() {
+    public void shouldfindAllByPatientId() {
         //given
         long patientId = 1L;
 
@@ -44,8 +44,22 @@ public class VisitServiceTest {
         assertThat(allByPatientId.size()).isEqualTo(3);
         for (VisitTO visitTO : allByPatientId) {
             assertThat(visitTO.getPatient_id()).isEqualTo(patientId);
+            assertThat(visitTO.getDescription()).isNotEmpty();
+            assertThat(visitTO.getTreatmentTypes()).isNotNull();
         }
 
+    }
+
+    @Test
+    public void notSoHappyshouldfindAllByPatientIdTest() {
+        // Given
+        long patientId = 9999L;
+
+        // When
+        List<VisitTO> allByPatientId = visitService.findAllByPatientId(patientId);
+
+        // Then
+        assertThat(allByPatientId).isEmpty();
     }
 
 }

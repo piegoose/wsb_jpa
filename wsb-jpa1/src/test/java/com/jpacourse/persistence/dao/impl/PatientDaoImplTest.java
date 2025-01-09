@@ -11,6 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -48,6 +49,17 @@ class PatientDaoImplTest {
             assertThat(visit.getPatient().getId()).isEqualTo(patientId);
         });
     }
+    //poza happy path'em
+    @Test
+    @Transactional
+    void findVisitsByNonexistentPatientIdQuery() {
+        // Given
+        Long patientId = 9999L;
+        // When
+        List<VisitEntity> visits = patientDao.findVisitsByPatientIdQuery(patientId);
+        // Then
+        assertThat(visits).isEmpty();
+    }
 
     @Test
     @Transactional
@@ -83,5 +95,28 @@ class PatientDaoImplTest {
         patients.forEach(patient -> System.out.println(
                 "Patient: " + patient.getFirstName() + " " + patient.getLastName() +
                         ", Has Insurance: " + patient.getHasInsurence()));
+    }
+
+    //Miały być jakieś nie z happy path
+    @Test
+    @Transactional
+    void testFindBySurnameQueryNotFound() {
+        // Given
+        String lastName = "Nonexistent";
+        // When
+        List<PatientEntity> patients = patientDao.findBySurnameQuery(lastName);
+        // Then
+        assertThat(patients).isEmpty();
+    }
+    //Miały być jakieś nie z happy path
+    @Test
+    @Transactional
+    void testFindBySurnameQueryNull() {
+        // Given
+        String lastName = null;
+        // When
+        List<PatientEntity> patients = patientDao.findBySurnameQuery(lastName);
+        //Then
+        assertThat(patients).isEmpty();
     }
 }
