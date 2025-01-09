@@ -27,6 +27,16 @@ public class AddressDaoTest
         assertThat(addressEntity).isNotNull();
         assertThat(addressEntity.getPostalCode()).isEqualTo("10001");
     }
+    @Transactional
+    @Test
+    public void testShouldFindAddressByIdNotSoHappy() {
+        // Given
+        Long nonexistentId = 9999L;
+        // When
+        AddressEntity addressEntity = addressDao.findOne(nonexistentId);
+        // Then
+        assertThat(addressEntity).isNull();
+    }
 
     @Test
     public void testShouldSaveAddress() {

@@ -9,9 +9,11 @@ import com.jpacourse.persistence.entity.VisitEntity;
 import com.jpacourse.persistence.enums.Specialization;
 
 
+import org.hibernate.OptimisticLockException;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.orm.ObjectOptimisticLockingFailureException;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import org.springframework.transaction.annotation.Transactional;
@@ -69,5 +71,31 @@ public class PatientDaoTest {
         assertThat(visit.getDescription()).isEqualTo(visitDescription);
         assertThat(visit.getDoctor().getId()).isEqualTo(doctor.getId());
         assertThat(visit.getTime()).isEqualTo(visitTime);
+    }
+
+
+    @Test
+    public void testOptimisticLock() {
+        //Given
+        Long patientId = 1L;
+        PatientEntity patient = patientDao.findOne(patientId);
+        assertThat(patient).isNotNull();
+        assertThat(patient.getId()).isEqualTo(patientId);
+
+        PatientEntity patientNew = patientDao.findOne(patientId);
+        assertThat(patientNew.getId()).isEqualTo(patientId);
+
+        //When
+        patient.setFirstName("UpdatedName");
+        patientDao.update(patient);
+        patientNew.setFirstName("UpdatedName2");
+        PatientEntity patientInDatabase = patientDao.findOne(patientId);
+        assertThat(patientInDatabase.getVersion()).isEqualTo(1);
+        assertThat(patientInDatabase.getFirstName()).isEqualTo("UpdatedName");
+
+        //Then
+        assertThrows(ObjectOptimisticLockingFailureException.class, () -> {
+            patientDao.update(patientNew);
+        });
     }
 }

@@ -14,6 +14,10 @@ public class PatientEntity {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+
+	@Version
+	private Integer version;
+
 	@Column(nullable = false)
 	private String firstName;
 
@@ -34,18 +38,16 @@ public class PatientEntity {
 	@Column(nullable = false)
 	private Boolean hasInsurence;
 
-	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)// Relacja dwustronna, rodzicem (właścicielem relacji) jest VisitEntity
 	private List<VisitEntity> visits = new ArrayList<>();
-//	private List<VisitEntity> visits; // Relacja dwustronna, rodzicem (właścicielem relacji) jest VisitEntity
-
-
-
+//	private List<VisitEntity> visits;
 
 	//	@OneToOne(mappedBy = "patient", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //	private AddressEntity address; // Relacja dwustronna, rodzicem (właścicielem relacji) jest AddressEntity
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinColumn(name = "address_id", referencedColumnName = "id", nullable = true)
 	private AddressEntity address;
+
 
 	public void setAddress(AddressEntity address) {
 		this.address = address;
@@ -60,6 +62,10 @@ public class PatientEntity {
 
 	public void setVisits(List<VisitEntity> visits) {
 		this.visits = visits;
+	}
+
+	public Integer getVersion() {
+		return version;
 	}
 
 	public Long getId() {
