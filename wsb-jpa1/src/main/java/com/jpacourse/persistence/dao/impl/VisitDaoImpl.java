@@ -12,6 +12,12 @@ import java.util.List;
 
 @Repository
 public class VisitDaoImpl extends AbstractDao<VisitEntity, Long> implements VisitDao {
+    @Override
+    public List<VisitEntity> findByPatientId(Long patientId) {
+        return entityManager.createNativeQuery("SELECT * FROM VISIT v JOIN PATIENT p ON v.patient_id = p.id and v.patient_id = :patientId", VisitEntity.class)
+                .setParameter("patientId", patientId)
+                .getResultList();
+    }
 
 //    @Override
 //    @Transactional

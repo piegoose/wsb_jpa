@@ -1,6 +1,5 @@
-package com.jpacourse.persistance.dao;
+package com.jpacourse.persistence.dao;
 
-import com.jpacourse.persistence.dao.AddressDao;
 import com.jpacourse.persistence.entity.AddressEntity;
 import org.junit.Test;
 import org.junit.runner.RunWith;
