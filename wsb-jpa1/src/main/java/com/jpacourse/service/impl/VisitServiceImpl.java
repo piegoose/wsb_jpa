@@ -38,6 +38,14 @@ public class VisitServiceImpl implements VisitService {
                 .collect(Collectors.toList());
     }
 
+    @Override
+    public List<VisitTO> findAllByPatientId(Long patientId) {
+        return visitDao.findByPatientId(patientId)
+                .stream()
+                .map(VisitMapper::mapToTO)
+                .collect(Collectors.toList());
+    }
+
 //    @Override
 //    public VisitTO addVisit(Long patientId, Long doctorId, LocalDateTime visitDate, String description, List<String> treatmentTypes) {
 //

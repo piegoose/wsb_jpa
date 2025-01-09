@@ -6,5 +6,6 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface VisitDao extends Dao<VisitEntity, Long> {
+    List<VisitEntity> findByPatientId(Long patientId);
 //    VisitEntity createVisit(Long patientId, Long doctorId, LocalDateTime visitDate, String description, List<String> treatmentTypes);
 }
