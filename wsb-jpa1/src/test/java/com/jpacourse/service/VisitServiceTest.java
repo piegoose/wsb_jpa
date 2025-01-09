@@ -33,7 +33,7 @@ public class VisitServiceTest {
     private VisitDao visitDao;
 
     @Test
- public    void shouldfindAllByPatientId() {
+ public void shouldfindAllByPatientId() {
         //given
         long patientId = 1L;
 

@@ -83,6 +83,8 @@ public class PatientServiceTest {
         Long patientId = 1L;
         Long visitId = 1L;
         Long doctorId = 1L;
+        long doctorCountBefore = entityManager.createQuery("SELECT COUNT(d) FROM DoctorEntity d", Long.class).getSingleResult();
+        long visitCountBefore = visitDao.count();
 
         PatientEntity patient = patientDao.findOne(patientId);
         assertThat(patient).isNotNull();
@@ -103,8 +105,20 @@ public class PatientServiceTest {
         List<VisitEntity> remainingVisits = visitDao.findAll();
         assertThat(remainingVisits).noneMatch(v -> v.getPatient().getId().equals(patientId));
 
+
+        //sprawdzenie czy ilość wizyt zgadza się z tym co było wcześniej
+        long visitCountAfter = visitDao.count();
+        assertThat(visitCountAfter).isEqualTo(visitCountBefore - patient.getVisits().size());
+
+        //sprawdzenie czy doktor o danym id pozostał
         DoctorEntity doctor = entityManager.find(DoctorEntity.class, doctorId);
         assertThat(doctor).isNotNull();
+        //sprawdzenie czy liczba doktorów zgadza się po wykonaniu metody
+        long doctorCountAfter = entityManager.createQuery("SELECT COUNT(d) FROM DoctorEntity d", Long.class).getSingleResult();
+        assertThat(doctorCountAfter).isEqualTo(doctorCountBefore);
+
+
+
     }
 
 }
